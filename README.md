@@ -1,124 +1,391 @@
-# Anton Lavey IA 3.0 - Framework Autónomo de Pentesting
+# 🔥 Anton Enhanced - Sistema Autónomo de Pentesting
 
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python)
-![Flask](https://img.shields.io/badge/Flask-API-green?style=for-the-badge&logo=flask)
-![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-red?style=for-the-badge&logo=streamlit)
-![Linux](https://img.shields.io/badge/Linux-Sudo_Powered-lightgrey?style=for-the-badge&logo=linux)
+![Version](https://img.shields.io/badge/version-4.1-red.svg)
+![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Status](https://img.shields.io/badge/status-Active-brightgreen.svg)
 
-```
-██████╗  ██████╗ ██╗    ██╗███████╗██████╗ 
-██╔══██╗██╔═══██╗██║    ██║██╔════╝██╔══██╗
-██████╔╝██║   ██║██║ █╗ ██║█████╗  ██████╔╝
-██╔═══╝ ██║   ██║██║███╗██║██╔══╝  ██╔══██╗
-██║     ╚██████╔╝╚███╔███╔╝███████╗██║  ██║
-╚═╝      ╚═════╝  ╚══╝╚══╝ ╚══════╝╚═╝  ╚═╝
-```
+## 🎯 Descripción
 
-**Anton Lavey IA 3.0** es un framework experimental para un agente de IA autónomo, diseñado para realizar tareas de pentesting y administración de sistemas en **entornos de laboratorio controlados**. Utiliza un modelo de lenguaje local (LLM) para razonar y tomar decisiones, y un conjunto de herramientas seguras para interactuar con el sistema operativo anfitrión.
+**Anton Enhanced** es un sistema de pentesting completamente autónomo basado en IA que utiliza el modelo **Hermes-3-Llama-3.1-8B** para ejecutar operaciones de seguridad avanzadas con máxima independencia y capacidad de auto-aprendizaje.
 
-El sistema está construido con una filosofía de **poder controlado**: aunque el núcleo de IA es muy libre, está encapsulado en un framework (`anton_pentest.py`) que impone políticas de seguridad estrictas, como la validación de objetivos y el registro de auditoría.
+### ✨ Características Principales
 
----
+- 🧠 **Auto-aprendizaje continuo** - Mejora automáticamente con cada operación
+- 🔥 **Temperatura 1.5** - Máxima creatividad e independencia operacional
+- 🤖 **Autonomía total** - Zero confirmaciones, ejecución directa de comandos
+- 📊 **Resultados en tiempo real** - Todo se muestra en pantalla, sin archivos
+- 🛠️ **Auto-instalación** - Instala automáticamente herramientas faltantes
+- 🔄 **Mejora continua** - Se perfecciona con cada operación ejecutada
+- 📱 **Interfaz Telegram** - Control completo desde Telegram
+- 🎯 **Operaciones distribuidas** - Coordinación de múltiples nodos
 
-## 🏛️ Arquitectura del Sistema
-
-Anton opera con una arquitectura modular que separa la inteligencia, la lógica y las interfaces.
+## 🏗️ Arquitectura del Sistema
 
 ```
-+---------------------------------+
-|        Interfaces de Usuario    |
-| (Streamlit, Telegram, WhatsApp) |
-+----------------+----------------+
-                 |
-                 v
-+----------------+----------------+
-|     API Server (app.py)         |
-| (Flask - El Cerebro de Anton)   |
-+----------------+----------------+
-                 |
-+----------------v----------------+      +----------------+----------------+
-|  Lógica y Herramientas          |------>|      LLM (llama-server)       |
-| (anton_pentest.py, Scripts Bash)|      | (Nous Hermes Llama2 13B)      |
-+----------------+----------------+      +----------------+----------------+
-                 |
-                 v
-+----------------+----------------+
-| Sistema Operativo Anfitrión     |
-| (Comandos con privilegios sudo) |
-+---------------------------------+
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│  Telegram Bot   │◄──►│   Flask API     │◄──►│  LLM Server     │
+│  (Interface)    │    │  (Anton Core)   │    │  (Hermes-3)     │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+         │                       │                       │
+         ▼                       ▼                       ▼
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│ User Commands   │    │ Operation Log   │    │ Knowledge Base  │
+│ & Notifications │    │ & Results       │    │ & Learning      │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
----
-
-## ✨ Características Principales
-
-* **Núcleo de IA Local:** Utiliza el modelo `nous-hermes-llama2-13b` a través de `llama.cpp` para un funcionamiento offline y privado.
-* **Control Total del Sistema:** Opera como un usuario con privilegios `sudo` sin contraseña, permitiéndole instalar herramientas, gestionar servicios y modificar el sistema.
-* **Framework de Pentesting Seguro:** A pesar de sus privilegios, todas las operaciones de pentesting son manejadas por `anton_pentest.py`, que incluye:
-    * Validación de objetivos contra una lista blanca.
-    * Prohibición explícita de atacar objetivos públicos.
-    * Requerimiento de autorización para tareas delicadas.
-    * Auditoría completa de todas las acciones.
-* **Múltiples Interfaces:** Accesible a través de un front-end web (Streamlit) y un bot de Telegram.
-* **Sincronización con GitHub:** Capacidad de hacer backup y sincronizar sus archivos de configuración y scripts importantes a un repositorio Git.
-* **Arranque Unificado:** Un único script (`start_anton.sh`) se encarga de la configuración del sistema, instalación de dependencias y el lanzamiento de todos los servicios.
-
----
-
-## 警告 Advertencia de Seguridad
-
-Este software está diseñado **exclusivamente para fines educativos y para ser utilizado en entornos de laboratorio aislados y autorizados.**
-
-* **NO EXPONER A INTERNET:** El agente tiene privilegios de `sudo`. Exponerlo directamente a internet sin medidas de seguridad extremas es increíblemente peligroso y podría resultar en el compromiso total de la máquina anfitriona.
-* **USO BAJO TU PROPIO RIESGO:** El autor no se hace responsable del mal uso de esta herramienta. Eres el único responsable de tus acciones.
-
----
-
-## 🚀 Instalación y Arranque
-
-El sistema está diseñado para ser configurado con un solo comando en un sistema basado en Ubuntu/Debian.
+## 🚀 Instalación Rápida
 
 ### Prerrequisitos
-1.  Un sistema operativo Linux (Ubuntu 22.04+ recomendado).
-2.  Python 3.10 o superior.
-3.  `git` y `python3-venv` instalados (`sudo apt install git python3-venv`).
-4.  **Modelo de Lenguaje:** Descargar el modelo `nous-hermes-llama2-13b.Q5_K_M.gguf` y colocarlo en un directorio llamado `models`.
-5.  **Llama.cpp:** Clonar y compilar `llama.cpp` en el directorio raíz del proyecto. El script de inicio buscará el ejecutable `llama-server` dentro de esta carpeta.
 
-### Configuración de Credenciales
-Antes del primer arranque, es necesario configurar las credenciales:
-1.  **Telegram:** Crea un archivo `telegram_bot.py` o integra tu token directamente en `app.py` o `start_anton.sh` si lo deseas.
-2.  **GitHub Sync:** Edita el archivo `github_sync.sh` y añade tu usuario, email y un **Token de Acceso Personal** de GitHub con permisos de `repo`.
+- Ubuntu/Debian Linux
+- Python 3.8+
+- 8GB+ RAM recomendado
+- Privilegios sudo
+- Modelo Hermes-3-Llama-3.1-8B.Q5_K_M.gguf
 
-### Arranque
-Una vez cumplidos los prerrequisitos, el arranque es tan simple como ejecutar un solo script.
+### Instalación Automática
 
 ```bash
-# Dar permisos de ejecución al script
+# Clonar repositorio
+git clone https://github.com/tu-usuario/anton-enhanced.git
+cd anton-enhanced
+
+# Crear entorno virtual
+python3 -m venv venv
+source venv/bin/activate
+
+# Instalar dependencias
+pip install flask flask-cors requests telebot
+
+# Configurar permisos
 chmod +x start_anton.sh
 
-# Ejecutar el script maestro
+# Iniciar Anton
 ./start_anton.sh
 ```
 
-Este comando se encargará de:
-1.  Verificar y configurar los permisos `sudo`.
-2.  Instalar todas las herramientas de pentesting necesarias (`nmap`, `hydra`, etc.).
-3.  Crear el entorno virtual de Python e instalar las dependencias.
-4.  Lanzar todos los servicios (LLM, API, Frontend, etc.) en el orden correcto.
+## ⚙️ Configuración
+
+### 1. Modelo LLM
+
+Descargar el modelo Hermes-3:
+```bash
+mkdir -p models
+cd models
+wget https://huggingface.co/NousResearch/Hermes-3-Llama-3.1-8B-GGUF/resolve/main/Hermes-3-Llama-3.1-8B.Q5_K_M.gguf
+```
+
+### 2. Telegram Bot (Opcional)
+
+1. Crear bot con @BotFather en Telegram
+2. Editar `telegram_bot.py`:
+```python
+TOKEN = "TU_TOKEN_AQUI"
+AUTHORIZED_USER_ID = TU_USER_ID
+```
+
+### 3. Configuración Avanzada
+
+Editar `anton_config.json`:
+```json
+{
+  "operation_settings": {
+    "max_timeout": 1800,
+    "auto_escalate": true,
+    "learning_mode": true
+  },
+  "paths": {
+    "log_dir": "/var/log/anton",
+    "results_dir": "/home/user/results"
+  }
+}
+```
+
+## 🎮 Uso Básico
+
+### Comandos Principales
+
+```bash
+# Iniciar sistema
+./start_anton.sh
+
+# Verificar estado
+./start_anton.sh status
+
+# Verificar salud
+./start_anton.sh health
+
+# Reiniciar
+./start_anton.sh restart
+
+# Detener
+./start_anton.sh stop
+```
+
+### Ejemplos de Operaciones
+
+#### Via Telegram:
+- `192.168.1.100` → Operación autónoma completa
+- `example.com` → Reconocimiento + testing web
+- `nmap -sS 192.168.1.0/24` → Ejecución directa
+- `instala nuclei` → Auto-instalación
+- `evalúa wireless` → Assessment WiFi
+
+#### Via API:
+```bash
+curl -X POST http://localhost:5000/anton \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "evalúa 192.168.1.100", "user_id": "admin"}'
+```
+
+## 🛠️ Herramientas Soportadas
+
+### Reconocimiento
+- `nmap` - Escaneo de red y puertos
+- `masscan` - Escaneo rápido masivo
+- `subfinder` - Enumeración de subdominios
+- `nuclei` - Escaneo de vulnerabilidades
+- `amass` - Reconocimiento de activos
+
+### Testing Web
+- `nikto` - Escaneo de vulnerabilidades web
+- `gobuster` - Enumeración de directorios
+- `sqlmap` - Testing de inyección SQL
+- `wpscan` - Análisis de WordPress
+- `whatweb` - Identificación de tecnologías
+
+### Credenciales
+- `hydra` - Ataques de fuerza bruta
+- `john` - Cracking de passwords
+- `hashcat` - Cracking con GPU
+- `medusa` - Fuerza bruta paralela
+
+### Wireless
+- `aircrack-ng` - Suite completa WiFi
+- `reaver` - Ataques WPS
+- `wifite` - Framework automatizado
+
+## 📊 Monitoreo y Logs
+
+### Estados del Sistema
+
+```bash
+# Estado general
+curl http://localhost:5000/status
+
+# Operaciones activas
+curl http://localhost:5000/evaluations
+
+# Logs en tiempo real
+tail -f ~/anton_enhanced.log
+```
+
+### Métricas de Aprendizaje
+
+Anton mantiene estadísticas de:
+- Targets analizados
+- Técnicas exitosas por target
+- Tasa de éxito por herramienta
+- Tiempo promedio de operaciones
+
+## 🔧 API Reference
+
+### Endpoints Principales
+
+| Endpoint | Método | Descripción |
+|----------|---------|-------------|
+| `/anton` | POST | Ejecutar operación |
+| `/status` | GET | Estado del sistema |
+| `/evaluations` | GET | Operaciones activas |
+
+### Estructura de Request
+
+```json
+{
+  "prompt": "192.168.1.100",
+  "user_id": "admin",
+  "operation_params": {
+    "depth": "comprehensive",
+    "timeout": 1800
+  }
+}
+```
+
+### Estructura de Response
+
+```json
+{
+  "response": "🎯 OPERACIÓN AUTÓNOMA INICIADA...",
+  "operation_id": "auto_192.168.1.100_1640995200",
+  "status": "running"
+}
+```
+
+## 🧠 Sistema de Auto-Aprendizaje
+
+Anton aprende automáticamente de cada operación:
+
+### Métricas Tracked
+- **Técnicas exitosas** por target
+- **Tiempo de ejecución** promedio
+- **Tasa de éxito** por herramienta
+- **Patrones de vulnerabilidades**
+
+### Mejora Automática
+- Adapta estrategias basado en historial
+- Optimiza secuencias de comandos
+- Prioriza técnicas más efectivas
+- Reduce falsos positivos
+
+## ⚠️ Consideraciones de Seguridad
+
+### Uso Responsable
+
+> **IMPORTANTE**: Anton está diseñado para pentesting autorizado en entornos controlados.
+
+- ✅ Usar solo en redes propias o autorizadas
+- ✅ Obtener permisos explícitos antes de testing
+- ✅ Documentar todas las actividades
+- ✅ Seguir marcos legales locales
+
+### Configuración Segura
+
+```bash
+# Restringir acceso a APIs
+iptables -A INPUT -p tcp --dport 5000 -s 127.0.0.1 -j ACCEPT
+iptables -A INPUT -p tcp --dport 5000 -j DROP
+
+# Configurar logs seguros
+chmod 640 /var/log/anton/*.log
+```
+
+## 🐛 Troubleshooting
+
+### Problemas Comunes
+
+#### Error: "llama-server no responde"
+```bash
+# Verificar proceso
+ps aux | grep llama-server
+
+# Revisar logs
+tail -f ~/anton_enhanced.log
+
+# Reiniciar
+./start_anton.sh restart
+```
+
+#### Error: "API no responde"
+```bash
+# Verificar sintaxis Python
+python3 -m py_compile app.py
+
+# Verificar dependencias
+pip install -r requirements.txt
+
+# Revisar logs Flask
+tail -f ~/anton_flask.log
+```
+
+#### Error: "Herramientas faltantes"
+```bash
+# Auto-instalación
+curl -X POST http://localhost:5000/anton \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "instala herramientas", "user_id": "admin"}'
+```
+
+### Logs de Diagnóstico
+
+```bash
+# Logs del sistema
+journalctl -u anton-enhanced
+
+# Logs de operaciones
+tail -f /var/log/anton/anton_*.log
+
+# Métricas de rendimiento
+htop
+iotop
+```
+
+## 📈 Roadmap
+
+### v4.2 (Próximo)
+- [ ] Interfaz web gráfica
+- [ ] Integración con Metasploit
+- [ ] Reportes automáticos en PDF
+- [ ] API de webhooks
+
+### v5.0 (Futuro)
+- [ ] Clustering multi-nodo
+- [ ] Machine learning avanzado
+- [ ] Integración con SIEM
+- [ ] Modo stealth avanzado
+
+## 🤝 Contribuir
+
+### Desarrollo
+
+```bash
+# Fork del repositorio
+git clone https://github.com/tu-usuario/anton-enhanced.git
+
+# Crear rama de feature
+git checkout -b feature/nueva-caracteristica
+
+# Commit y push
+git commit -m "feat: nueva característica"
+git push origin feature/nueva-caracteristica
+
+# Crear Pull Request
+```
+
+### Estructura del Código
+
+```
+anton-enhanced/
+├── app.py              # Core API de Anton
+├── telegram_bot.py     # Interfaz Telegram
+├── start_anton.sh      # Script de inicio
+├── anton_lavey.py      # Coordinador distribuido
+├── anton_pentest.py    # Motor de operaciones
+├── models/             # Modelos LLM
+├── logs/               # Logs del sistema
+└── docs/               # Documentación
+```
+
+### Guidelines
+
+- **Código limpio** y comentado
+- **Tests unitarios** para nuevas features
+- **Documentación** actualizada
+- **Commits semánticos** (feat, fix, docs, etc.)
+
+## 📄 Licencia
+
+Este proyecto está licenciado bajo la MIT License - ver [LICENSE](LICENSE) para detalles.
+
+## ⚖️ Disclaimer
+
+Este software es para fines **educativos y de testing autorizado únicamente**. Los usuarios son responsables de cumplir con todas las leyes y regulaciones locales. Los desarrolladores no se hacen responsables del mal uso de esta herramienta.
+
+## 📞 Soporte
+
+- 🐛 **Issues**: [GitHub Issues](https://github.com/tu-usuario/anton-enhanced/issues)
+- 💬 **Discusiones**: [GitHub Discussions](https://github.com/tu-usuario/anton-enhanced/discussions)
+- 📧 **Email**: anton-support@ejemplo.com
 
 ---
 
-## 🛠️ Uso
+<div align="center">
 
-Una vez que el sistema esté activo, puedes interactuar con Anton de las siguientes maneras:
+**🔥 Anton Enhanced - Pentesting Autónomo con IA 🔥**
 
-* **Frontend Web:** Abre tu navegador y ve a `http://127.0.0.1:8501`.
-* **Bot de Telegram:** Busca tu bot en Telegram y envíale mensajes.
+*Desarrollado con ❤️ para la comunidad de ciberseguridad*
 
-### Ejemplos de Comandos
+[⭐ Star](https://github.com/tu-usuario/anton-enhanced) | [🐛 Report Bug](https://github.com/tu-usuario/anton-enhanced/issues) | [💡 Request Feature](https://github.com/tu-usuario/anton-enhanced/issues)
 
-* `hola anton como estas` (Para una conversación normal)
-* `escanea la red 192.168.1.0/24 con un escaneo básico` (Para usar una herramienta segura)
-* `sincroniza el proyecto con github` (Para ejecutar el script de backup)
-* `escribe un archivo en notas/plan.txt con el contenido: 'Paso 1: Reconocimiento'` (Para guardar notas)
+</div>
